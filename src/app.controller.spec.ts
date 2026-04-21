@@ -14,9 +14,16 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('getPost', () => {
+    it('should return an array of strings', () => {
+      expect(appController.getPost()).toBeInstanceOf(Array);
+    });
+  });
+
+  describe('createPost', () => {
+    it('should create a new post', () => {
+      appController.createPost('Post 1');
+      expect(appController.getPost()).toHaveLength(1);
     });
   });
 });
